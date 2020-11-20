@@ -4,9 +4,11 @@
   "private": true,
   "main": "electron/dist/index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "app": "rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && electron ."
+    "serve:ui": "cross-env NODE_ENV=development vue-cli-service serve  --host localhost",
+    "build:ui": "cross-env NODE_ENV=production vue-cli-service build",
+    "serve:app": "cross-env NODE_ENV=development rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && electron .",
+    "serve": "concurrently -k \"npm run serve:ui\" \"sleep 10 && npm run serve:app\"",
+    "serve:cli": "npm run serve"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -29,6 +31,8 @@
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
     "electron": "^11.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
