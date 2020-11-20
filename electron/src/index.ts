@@ -14,9 +14,15 @@ function createWindow() {
   });
 
   win.setTitle('Chordial');
-  // win.loadFile(path.join(__dirname, '..', 'assets', 'ui', '/index.html'));
-  win.loadURL('http://localhost:8080');
-  win.webContents.openDevTools();
+
+  if (process.env.NODE_ENV === 'development') {
+    win.loadURL('http://localhost:8080');
+    win.webContents.openDevTools();
+  } else {
+    win.loadFile(path.join(__dirname, '..', 'assets', 'ui', '/index.html'));
+  }
+
+  
 }
 
 app.whenReady().then(createWindow);

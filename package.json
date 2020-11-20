@@ -4,11 +4,14 @@
   "private": true,
   "main": "electron/dist/index.js",
   "scripts": {
-    "serve:ui": "cross-env NODE_ENV=development vue-cli-service serve  --host localhost",
+    "serve:ui": "cross-env NODE_ENV=development vue-cli-service serve --host localhost",
     "build:ui": "cross-env NODE_ENV=production vue-cli-service build",
-    "serve:app": "cross-env NODE_ENV=development rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && electron .",
-    "serve": "concurrently -k \"npm run serve:ui\" \"sleep 10 && npm run serve:app\"",
-    "serve:cli": "npm run serve"
+    "serve:app": "rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && cross-env NODE_ENV=development electron .",
+    "serve:app:built": "rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && cross-env NODE_ENV=production electron .",
+    "serve:chain": "concurrently -k \"npm run serve:ui\" \"sleep 10 && npm run serve:app\"",
+    "serve:chain:built":"concurrently \"npm run build:ui\" \" wait-on -d 10000 ./electron/assets/ui && npm run serve:app:built\"",
+    "serve": "npm run serve:chain",
+    "built": "npm run serve:chain:built"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -40,6 +43,7 @@
     "prettier": "^1.19.1",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "wait-on": "^5.2.0"
   }
 }

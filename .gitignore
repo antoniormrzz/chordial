@@ -3,6 +3,7 @@ node_modules
 /dist
 /out
 /electron/dist
+/electron/assets/ui
 
 
 # local env files
