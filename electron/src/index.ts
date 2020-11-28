@@ -3,8 +3,8 @@ import path from 'path';
 
 function createWindow() {
   const win = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: 800,
+    width: 1000,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true
@@ -12,6 +12,8 @@ function createWindow() {
     icon: path.join(__dirname, '..', 'assets', 'icons', 'cp.png'),
     title: 'Chordial'
   });
+
+  win.removeMenu();
 
   win.setTitle('Chordial');
 
