@@ -13,7 +13,7 @@ function createWindow() {
     title: 'Chordial'
   });
 
-  win.removeMenu();
+  // win.removeMenu();
 
   win.setTitle('Chordial');
 

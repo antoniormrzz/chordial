@@ -1,23 +1,19 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import Home from '../views/Home.vue';
+import resolver from './resolver';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: Home
   },
+  ...resolver,
   {
-    path: "/resolvers",
-    name: "Resolvers",
+    path: '/about',
+    name: 'About',
     component: () =>
-      import(/* webpackChunkName: "resolvers" */ "../views/Resolvers.vue")
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ];
 

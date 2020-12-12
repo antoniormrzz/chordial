@@ -14,6 +14,11 @@ import Menu from 'primevue/menu';
 import Card from 'primevue/card';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import Tooltip from 'primevue/tooltip';
+import InputText from 'primevue/inputtext';
+import AutoComplete from 'primevue/autocomplete';
+import RadioButton from 'primevue/radiobutton';
+import Divider from 'primevue/divider';
 
 import './assets/styles/global.styl';
 
@@ -25,6 +30,11 @@ createApp(App)
   .component('Card', Card)
   .component('DataTable', DataTable)
   .component('Column', Column)
+  .component('InputText', InputText)
+  .component('AutoComplete', AutoComplete)
+  .component('RadioButton', RadioButton)
+  .component('Divider', Divider)
+  .directive('tooltip', Tooltip)
   .use(store)
   .use(router)
   .mount('#app');

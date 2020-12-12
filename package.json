@@ -9,7 +9,7 @@
     "serve:app": "rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && cross-env NODE_ENV=development electron .",
     "serve:app:built": "rm -rf electron/dist/ && tsc -p electron/src/tsconfig.json && cross-env NODE_ENV=production electron .",
     "serve:chain": "concurrently -k \"npm run serve:ui\" \"sleep 10 && npm run serve:app\"",
-    "serve:chain:built":"concurrently \"npm run build:ui\" \" wait-on -d 10000 ./electron/assets/ui && npm run serve:app:built\"",
+    "serve:chain:built": "concurrently \"npm run build:ui\" \" wait-on -d 10000 ./electron/assets/ui && npm run serve:app:built\"",
     "serve": "npm run serve:chain",
     "built": "npm run serve:chain:built"
   },
@@ -17,7 +17,7 @@
     "core-js": "^3.6.5",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
-    "primevue": "^3.0.1",
+    "primevue": "^3.1.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
